@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Create a new list item
     const listItem = document.createElement("li");
     listItem.textContent = taskText;
+    listItem.classList.add("task-item"); // Add class for styling
 
     // Create a remove button
     const removeButton = document.createElement("button");
@@ -25,7 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Attach event to remove button
     removeButton.onclick = function () {
-      taskList.removeChild(listItem); // Remove the task when button is clicked
+      listItem.classList.add("fade-out"); // Optional: add fade-out effect
+      setTimeout(() => {
+        taskList.removeChild(listItem); // Remove the task after fade-out
+      }, 300); // Match with CSS transition duration
     };
 
     // Append the button to the list item
